@@ -319,7 +319,7 @@
       
         
           
-            <p>###目前主流框架:</p>
+            <p>###目前主流框架:###</p>
 <ul>
 <li>Universal-Image-Loader</li>
 <li>Picasso</li>
@@ -356,8 +356,8 @@
 <li><p>由此可见，相对于Picasso和停止维护的UIL，Fresco和Glide要活跃得多。</p>
 </li>
 </ul>
-<h3 id="3-功能特色和优缺点"><a href="#3-功能特色和优缺点" class="headerlink" title="3.功能特色和优缺点"></a>3.功能特色和优缺点</h3><p>####UIL</p>
-<p>#####功能和优点</p>
+<h3 id="3-功能特色和优缺点"><a href="#3-功能特色和优缺点" class="headerlink" title="3.功能特色和优缺点"></a>3.功能特色和优缺点</h3><p>####UIL####</p>
+<p>#####功能和优点#####</p>
 <ul>
 <li>支持两级图片缓存：内存和磁盘缓存</li>
 <li>支持同步和异步加载图片</li>
@@ -365,27 +365,27 @@
 <li>支持下载进度监听</li>
 <li>支持滚动中暂停加载（通过PauseOnScrollListener接口）</li>
 <li>支持自定义本地缓存文件名命名规则</li>
-<li>支持多种缓存管理算法（相比其他库而言种类更多）<br>#####主要缺点</li>
+<li>支持多种缓存管理算法（相比其他库而言种类更多）<br>#####主要缺点#####</li>
 <li>不支持Gif显示</li>
 <li>已经停止维护</li>
 </ul>
-<p>####Picasso</p>
-<p>#####功能和优点</p>
+<p>####Picasso####</p>
+<p>#####功能和优点#####</p>
 <ul>
 <li>支持统计监控功能，包括缓存命中率、已使用内存大小、节省的流量等。</li>
 <li>支持优先级操作</li>
 <li>支持延迟到图片尺寸计算完成加载</li>
 <li>根据网络状态自动切换并发线程数量，包括飞行模式</li>
 </ul>
-<p>#####主要缺点</p>
+<p>#####主要缺点#####</p>
 <ul>
 <li><p>没有本地缓存，Picasso的设计上是将缓存交给了Square的另一个库OkHttp，这样的好处是可以通过请求 Response Header 中的 Cache-Control 及 Expired 控制图片的过期时间。</p>
 </li>
 <li><p>内存占用量相对较大，甚至容易出现内存泄露，<a href="https://medium.com/@shollmann/picasso-universal-image-loader-or-glide-that-s-the-question-af34fa7f5e63#.prsvkn8h7" target="_blank" rel="external">参见这个测试</a>。</p>
 </li>
 </ul>
-<p>####Glide</p>
-<p>#####功能和优点</p>
+<p>####Glide####</p>
+<p>#####功能和优点#####</p>
 <ul>
 <li><p>Glide总体设计图<br><img src="http://upload-images.jianshu.io/upload_images/1936241-a2adab0877914caa.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 </li>
@@ -408,12 +408,12 @@
 <li>支持网络连接配置，默认使用UrlConnection，也可以配合OkHttp或者Volley使用。</li>
 <li>内存友好，包括自动清理内存缓存、缓存图片尺寸、默认使用RGB_565等。以至于Google官方把使用Glide作为App性能优化的典范，视频戳这里:Performance optimisations for android applications - Part 7 Using Glide image loading framework</li>
 </ul>
-<p>#####主要缺点</p>
+<p>#####主要缺点#####</p>
 <ul>
 <li>相对于Square的Picasso和Facebook的Fresco，Glide虽然是由Google员工开发和维护并在Google产品中有一定的应用，但并不是Google的官方加载库。</li>
 </ul>
-<p>####Fresco</p>
-<p>#####功能和优点</p>
+<p>####Fresco####</p>
+<p>#####功能和优点#####</p>
 <ul>
 <li><p>Fresco的设计和前面几个库都大不相同：它自己定义了一个显示图片的View（称为Drawee）。大部分功能都可以使用SimpleDraweeView来实现，并且几乎所有可配置的属性都支持XML配置。</p>
 </li>
@@ -437,7 +437,7 @@
 <ul>
 <li>支持完全自定义的网络层</li>
 </ul>
-<p>#####主要缺点</p>
+<p>#####主要缺点#####</p>
 <ul>
 <li>SimpleDraweeView继承自ImageView，但是如果应用程序调用了原生ImageView的方法，例如setImageBackground，会使得内部的DraweeHierachy完全丢失。而且在Fresco的中文文档中明确说明后续版本这个控件可能直接从View类派生。所以在使用DraweeView时不能使用ImageView的任何API，也不能依赖于其继承自ImageView甚至View的继承树。</li>
 </ul>
@@ -459,7 +459,7 @@
 <ul>
 <li>切换图片加载库会很困难。由于大部分功能依赖于SimpleDraweeView，因此和使用其他的加载库的布局文件会有所区别，导致老项目难以迁移；同时一开始就使用Fresco的新项目，以后无论出于什么原因需要换库，同样会很麻烦。</li>
 </ul>
-<p>###四. 结论</p>
+<p>###四. 结论###</p>
 <ol>
 <li>如果预见项目中会有很多圆角或渐进式JPEG等需求，可以使用Fresco；</li>
 </ol>
