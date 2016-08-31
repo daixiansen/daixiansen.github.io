@@ -1,0 +1,1104 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="自动化,测试,UiAutomator," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="自动化测试主流框架对比1.Monkey
+Monkey是Android SDK自带的测试工具，在测试过程中会向系统发送伪随机的用户事件流，如按键输入、触摸屏输入、手势输入等)，实现对正在开发的应用程序进行压力测试，也有日志输出。实际上该工具只能做程序做一些压力测试，由于测试事件和数据都是随机的，不能自定义，所以有很大的局限性。
+
+2.MonkeyRunner
+MonkeyRunner也是Androi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android自动化测试">
+<meta property="og:url" content="http://yoursite.com/2016/08/31/Android自动化测试/index.html">
+<meta property="og:site_name" content="Davil & Tian">
+<meta property="og:description" content="自动化测试主流框架对比1.Monkey
+Monkey是Android SDK自带的测试工具，在测试过程中会向系统发送伪随机的用户事件流，如按键输入、触摸屏输入、手势输入等)，实现对正在开发的应用程序进行压力测试，也有日志输出。实际上该工具只能做程序做一些压力测试，由于测试事件和数据都是随机的，不能自定义，所以有很大的局限性。
+
+2.MonkeyRunner
+MonkeyRunner也是Androi">
+<meta property="og:image" content="http://occcfufho.bkt.clouddn.com/16-8-30/35162171.jpg">
+<meta property="og:image" content="http://occcfufho.bkt.clouddn.com/16-8-30/8924590.jpg">
+<meta property="og:image" content="http://occcfufho.bkt.clouddn.com/16-8-30/24236431.jpg">
+<meta property="og:image" content="http://occcfufho.bkt.clouddn.com/16-8-30/86339292.jpg">
+<meta property="og:image" content="http://occcfufho.bkt.clouddn.com/16-8-30/10958608.jpg">
+<meta property="og:image" content="http://occcfufho.bkt.clouddn.com/16-8-30/73659249.jpg">
+<meta property="og:image" content="http://occcfufho.bkt.clouddn.com/16-8-30/917158.jpg">
+<meta property="og:image" content="http://occcfufho.bkt.clouddn.com/16-8-30/74294878.jpg">
+<meta property="og:image" content="http://occcfufho.bkt.clouddn.com/16-8-30/80242091.jpg">
+<meta property="og:image" content="http://occcfufho.bkt.clouddn.com/16-8-30/57950852.jpg">
+<meta property="og:image" content="http://occcfufho.bkt.clouddn.com/16-8-30/91482049.jpg">
+<meta property="og:image" content="http://occcfufho.bkt.clouddn.com/16-8-30/37963252.jpg">
+<meta property="og:image" content="http://occcfufho.bkt.clouddn.com/16-8-30/25640263.jpg">
+<meta property="og:image" content="http://occcfufho.bkt.clouddn.com/16-8-30/98710941.jpg">
+<meta property="og:image" content="http://occcfufho.bkt.clouddn.com/16-8-30/76288023.jpg">
+<meta property="og:image" content="http://occcfufho.bkt.clouddn.com/16-8-30/38514192.jpg">
+<meta property="og:image" content="http://occcfufho.bkt.clouddn.com/16-8-30/14127274.jpg">
+<meta property="og:image" content="http://occcfufho.bkt.clouddn.com/16-8-30/57352620.jpg">
+<meta property="og:image" content="http://occcfufho.bkt.clouddn.com/16-8-30/43445204.jpg">
+<meta property="og:image" content="http://occcfufho.bkt.clouddn.com/16-8-30/3964140.jpg">
+<meta property="og:image" content="http://occcfufho.bkt.clouddn.com/16-8-30/88907122.jpg">
+<meta property="og:image" content="http://occcfufho.bkt.clouddn.com/16-8-30/23818434.jpg">
+<meta property="og:image" content="http://occcfufho.bkt.clouddn.com/16-8-30/98409436.jpg">
+<meta property="og:image" content="http://occcfufho.bkt.clouddn.com/16-8-30/4080810.jpg">
+<meta property="og:image" content="http://occcfufho.bkt.clouddn.com/16-8-30/34499682.jpg">
+<meta property="og:image" content="http://occcfufho.bkt.clouddn.com/16-8-30/88845205.jpg">
+<meta property="og:image" content="http://occcfufho.bkt.clouddn.com/16-8-30/23792433.jpg">
+<meta property="og:image" content="http://occcfufho.bkt.clouddn.com/16-8-30/44719596.jpg">
+<meta property="og:image" content="http://occcfufho.bkt.clouddn.com/16-8-30/26782283.jpg">
+<meta property="og:updated_time" content="2016-08-31T08:39:17.747Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android自动化测试">
+<meta name="twitter:description" content="自动化测试主流框架对比1.Monkey
+Monkey是Android SDK自带的测试工具，在测试过程中会向系统发送伪随机的用户事件流，如按键输入、触摸屏输入、手势输入等)，实现对正在开发的应用程序进行压力测试，也有日志输出。实际上该工具只能做程序做一些压力测试，由于测试事件和数据都是随机的，不能自定义，所以有很大的局限性。
+
+2.MonkeyRunner
+MonkeyRunner也是Androi">
+<meta name="twitter:image" content="http://occcfufho.bkt.clouddn.com/16-8-30/35162171.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/08/31/Android自动化测试/"/>
+
+  <title> Android自动化测试 | Davil & Tian </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Davil & Tian</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android自动化测试
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-31T16:38:12+08:00" content="2016-08-31">
+              2016-08-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android自动化测试/" itemprop="url" rel="index">
+                    <span itemprop="name">android自动化测试</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/31/Android自动化测试/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/31/Android自动化测试/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="自动化测试主流框架对比"><a href="#自动化测试主流框架对比" class="headerlink" title="自动化测试主流框架对比"></a>自动化测试主流框架对比</h2><h3 id="1-Monkey"><a href="#1-Monkey" class="headerlink" title="1.Monkey"></a>1.Monkey</h3><ul>
+<li>Monkey是Android SDK自带的测试工具，在测试过程中会向系统发送伪随机的用户事件流，如按键输入、触摸屏输入、手势输入等)，实现对正在开发的应用程序进行压力测试，也有日志输出。实际上该工具只能做程序做一些压力测试，由于测试事件和数据都是随机的，不能自定义，所以有很大的局限性。</li>
+</ul>
+<h3 id="2-MonkeyRunner"><a href="#2-MonkeyRunner" class="headerlink" title="2.MonkeyRunner"></a>2.MonkeyRunner</h3><ul>
+<li>MonkeyRunner也是Android SDK提供的测试工具。严格意义上来说MonkeyRunner其实是一个Api工具包，比Monkey强大，可以编写测试脚本来自定义数据、事件。缺点是脚本只能用Python来写，对测试人员来说要求较高，有比较大的学习成本。</li>
+</ul>
+<h3 id="3-Instrumentation"><a href="#3-Instrumentation" class="headerlink" title="3. Instrumentation"></a>3. Instrumentation</h3><ul>
+<li>Instrumentation是早期Google提供的Android自动化测试工具类，虽然在那时候JUnit也可以对Android进行测试，但是Instrumentation允许你对应用程序做更为复杂的测试，甚至是框架层面的。通过Instrumentation你可以模拟按键按下、抬起、屏幕点击、滚动等事件。Instrumentation是通过将主程序和测试程序运行在同一个进程来实现这些功能，你可以把Instrumentation看成一个类似Activity或者Service并且不带界面的组件，在程序运行期间监控你的主程序。缺点是对测试人员来说编写代码能力要求较高，需要对Android相关知识有一定了解，还需要配置AndroidManifest.xml文件，不能跨多个App。</li>
+</ul>
+<h3 id="4-UiAutomator"><a href="#4-UiAutomator" class="headerlink" title="4.UiAutomator"></a>4.UiAutomator</h3><ul>
+<li>UiAutomator也是Android提供的自动化测试框架，基本上支持所有的Android事件操作，对比Instrumentation它不需要测试人员了解代码实现细节（可以用UiAutomatorviewer抓去App页面上的控件属性而不看源码）。基于Java，测试代码结构简单、编写容易、学习成本，一次编译，所有设备或模拟器都能运行测试，能跨App（比如：很多App有选择相册、打开相机拍照，这就是跨App测试）。缺点是只支持SDK 16（Android 4.1）及以上，不支持Hybird App、WebApp。</li>
+</ul>
+<h3 id="5-Espresso"><a href="#5-Espresso" class="headerlink" title="5.Espresso"></a>5.Espresso</h3><ul>
+<li>Espresso是Google的开源自动化测试框架。相对于Robotium和UIAutomator，它的特点是规模更小、更简洁，API更加精确，编写测试代码简单，容易快速上手。因为是基于Instrumentation的，所以不能跨App。<a href="https://medium.com/@marta/ui-tests-with-espresso-android-studio-c476d3b5ba45#.cfj4y5aih" target="_blank" rel="external">配合Android Studio编写测试的简单例子</a>.</li>
+</ul>
+<h3 id="6-Selendroid"><a href="#6-Selendroid" class="headerlink" title="6.Selendroid"></a>6.Selendroid</h3><ul>
+<li>Selendroid：也是基于Instrumentation的测试框架，可以测试Native App、Hybird App、Web App，但是网上资料较少，社区活跃度也不大。</li>
+</ul>
+<h3 id="7-Robotium"><a href="#7-Robotium" class="headerlink" title="7.Robotium"></a>7.Robotium</h3><ul>
+<li>Robotium也是基于Instrumentation的测试框架，目前国内外用的比较多，资料比较多，社区也比较活跃。缺点是对测试人员来说要有一定的Java基础，了解Android基本组件，不能跨App。</li>
+</ul>
+<h3 id="8-Athrun"><a href="#8-Athrun" class="headerlink" title="8.Athrun"></a>8.Athrun</h3><ul>
+<li>Athrun是淘宝出的一个移动测试框架/平台，同时支持iOS和Android。Android部分也是基于Instrumentation，在Android原有的ActivityInstrumentationTestCase2类基础上进行了扩展，提供一整套面向对象的API。<a href="http://code.taobao.org/p/athrun/wiki/index/" target="_blank" rel="external">这里</a>有详细介绍。</li>
+</ul>
+<h3 id="9-Appium"><a href="#9-Appium" class="headerlink" title="9.Appium"></a>9.Appium</h3><ul>
+<li>Appium是最近比较热门的框架，社区也很活跃。这个框架应该是是功能最强大的,appium在iOS部分是封装了UIAutomation；Android 4.2以上是用UiAutomator，Android 2.3 ~ 4.1用的是 Instrumentation，也就说Appium同时封装了UiAutomator和Instrumentation。所以Appium拥有了以上几大框架的所有优点：跨App，支持Native App、Hybird App、Web App，还支持N种语言来编写你的测试脚本。</li>
+</ul>
+<blockquote>
+<p>附对比图一张:</p>
+</blockquote>
+<p><img src="http://occcfufho.bkt.clouddn.com/16-8-30/35162171.jpg" alt=""></p>
+<h2 id="通过UiAutomator-搭建自动化测试环境"><a href="#通过UiAutomator-搭建自动化测试环境" class="headerlink" title="通过UiAutomator 搭建自动化测试环境"></a>通过UiAutomator 搭建自动化测试环境</h2><h3 id="1-UiAutomator环境搭建"><a href="#1-UiAutomator环境搭建" class="headerlink" title="1. UiAutomator环境搭建"></a>1. UiAutomator环境搭建</h3><ul>
+<li>开发环境：Eclipse</li>
+<li>编译环境：Ant、Java、Android SDK </li>
+</ul>
+<h3 id="2-配置工程环境"><a href="#2-配置工程环境" class="headerlink" title="2. 配置工程环境"></a>2. 配置工程环境</h3><ol>
+<li><p>在Eclipse中创建一个java工程，并添加platforms文件夹下面的android.jar和uiautomator.jar 两个引用。如下图：<br><img src="http://occcfufho.bkt.clouddn.com/16-8-30/8924590.jpg" alt=""></p>
+</li>
+<li><p>创建测试用例,UiAutomator中的测试类都要继承UiAutomatorTestCase，每个测试用例的方法的方法名都要以test开头。如下图：<br><img src="http://occcfufho.bkt.clouddn.com/16-8-30/24236431.jpg" alt=""></p>
+<blockquote>
+<p>在测试用例的方法中，我们就可以编写测试脚本代码</p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li>生成build.xml文件</li>
+<li>在终端中，输入：<blockquote>
+<p>android create uitest-project -n <name> -t <android-sdk-id> -p &lt; path &gt;</android-sdk-id></name></p>
+</blockquote>
+</li>
+</ul>
+<p>ps: 这里的android sdk id指的是在终端中，输入android list返回的你使用的sdk的id。</p>
+<p>例如：</p>
+<blockquote>
+<p>android create uitest-project -n Demo -t 30 -p “F:\EclipseWorkSpace\AutoTest”</p>
+</blockquote>
+<p>如下图：<br><img src="http://occcfufho.bkt.clouddn.com/16-8-30/86339292.jpg" alt=""></p>
+<ul>
+<li>修改build.xml文件</li>
+</ul>
+<p>生成的build.xml文件我们还无法直接使用，我们需要修改它的一个属性，打开build.xml文件，将help改为build，如下图：</p>
+<p><img src="http://occcfufho.bkt.clouddn.com/16-8-30/10958608.jpg" alt=""></p>
+<ul>
+<li>打包Jar</li>
+</ul>
+<p>使用Ant，我们利用build.xml打包生成jar，命令如下：</p>
+<blockquote>
+<p>ant -buildfile “F:\EclipseWorkSpace\AutoTest”</p>
+</blockquote>
+<p>编译过程如下图：<br><img src="http://occcfufho.bkt.clouddn.com/16-8-30/73659249.jpg" alt=""></p>
+<ul>
+<li>Push Jar包到手机</li>
+</ul>
+<p>我们需要将jar包push到手机中的/data/local/tmp/目录才能启动测试。如下图：</p>
+<blockquote>
+<p>adb push “F:\EclipseWorkSpace\AutoTest\bin\Demo.jar” /data/local/tmp/</p>
+</blockquote>
+<p>执行测试用例</p>
+<p>在终端中输入启动测试命令（#后如果不指定具体的用例名，则测试所有的方法），如下：</p>
+<blockquote>
+<p>adb shell uiautomator runtest Demo.jar –nohup -c com.hj.autotest.AutoTest#testBrowser</p>
+</blockquote>
+<p><img src="http://occcfufho.bkt.clouddn.com/16-8-30/917158.jpg" alt=""></p>
+<p>到此为止，整个测试用例的测试就全部结束了。</p>
+<h3 id="3-让自动化测试更加自动化"><a href="#3-让自动化测试更加自动化" class="headerlink" title="3.让自动化测试更加自动化"></a>3.让自动化测试更加自动化</h3><p>创建一个脚本工具——UiAutomatorTool，来封装这些机械的步骤。</p>
+<pre><code>代码如下:
+package com.hj.autotest;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
+public class UiAutomatorTool {
+
+// 工作空间目录
+private static String WORKSPACE_PATH;
+
+/**
+ * 指定自动测试的参数
+ *
+ * @param jarName
+ *            生成jar的名字
+ * @param testPackageclass
+ *            测试包名+类名
+ * @param testFunction
+ *            测试方法名，空字符串代表测试所有方法
+ * @param androidId
+ *            SDK id
+ */
+public UiAutomatorTool(String jarName, String testPackageclass,
+        String testFunction, String androidId) {
+    System.out.println(&quot;*******************&quot;);
+    System.out.println(&quot; --AutoTest Start--&quot;);
+    System.out.println(&quot;*******************&quot;);
+    // 获取工作空间目录路径
+    WORKSPACE_PATH = getWorkSpase();
+    System.out.println(&quot;自动测试项目工作空间:\t\n&quot; + getWorkSpase());
+
+    // ***********启动测试*********** //
+    // 创建Build.xml文件
+    creatBuildXml(jarName, androidId);
+    // 修改Build.xml文件中的Build类型
+    modfileBuild();
+    // 使用Ant编译jar包
+    antBuild();
+    // push jar到手机
+    pushJarToAndroid(WORKSPACE_PATH + &quot;\\bin\\&quot; + jarName + &quot;.jar&quot;);
+    // 测试方法，为空则测试全部方法
+    if (androidId.equals(&quot;&quot;)) {
+        runTest(jarName, testPackageclass);
+    } else {
+        runTest(jarName, testPackageclass + &quot;#&quot; + testFunction);
+    }
+    // ***********启动测试*********** //
+    System.out.println(&quot;*******************&quot;);
+    System.out.println(&quot;---AutoTest End----&quot;);
+    System.out.println(&quot;*******************&quot;);
+}
+
+/**
+ * 创建build.xml文件
+ */
+public void creatBuildXml(String jarName, String androidID) {
+    System.out.println(&quot;--------创建build.xml 开始---------&quot;);
+    execCmd(&quot;cmd /c android create uitest-project -n &quot; + jarName + &quot; -t &quot;
+            + androidID + &quot; -p &quot; + &quot;\&quot;&quot; + WORKSPACE_PATH + &quot;\&quot;&quot;);
+    System.out.println(&quot;--------创建build.xml 完成---------&quot;);
+}
+
+/**
+ * 修改build.xml文件位build type
+ */
+public void modfileBuild() {
+    System.out.println(&quot;--------修改build.xml 开始---------&quot;);
+    StringBuffer stringBuffer = new StringBuffer();
+    try {
+        File file = new File(&quot;build.xml&quot;);
+        if (file.isFile() &amp;&amp; file.exists()) {
+            InputStreamReader read = new InputStreamReader(
+                    new FileInputStream(file));
+            BufferedReader bufferedReader = new BufferedReader(read);
+            String lineTxt;
+            while ((lineTxt = bufferedReader.readLine()) != null) {
+                if (lineTxt.matches(&quot;.*help.*&quot;)) {
+                    lineTxt = lineTxt.replaceAll(&quot;help&quot;, &quot;build&quot;);
+                }
+                stringBuffer = stringBuffer.append(lineTxt).append(&quot;\t\n&quot;);
+            }
+            read.close();
+        } else {
+            System.out.println(&quot;找不到build.xml文件&quot;);
+        }
+    } catch (Exception e) {
+        System.out.println(&quot;读取build.xml内容出错&quot;);
+        e.printStackTrace();
+    }
+    // 重新写回build.xml
+    rewriteBuildxml(&quot;build.xml&quot;, new String(stringBuffer));
+    System.out.println(&quot;--------修改build.xml 完成---------&quot;);
+}
+
+/**
+ * 使用Ant编译jar包
+ */
+public void antBuild() {
+    System.out.println(&quot;--------编译build.xml 开始---------&quot;);
+    execCmd(&quot;cmd /c ant -buildfile &quot; + &quot;\&quot;&quot; + WORKSPACE_PATH + &quot;\&quot;&quot;);
+    System.out.println(&quot;--------编译build.xml 完成---------&quot;);
+}
+
+/**
+ * adb push jar包到Android手机
+ *
+ * @param localPath
+ *            localPath
+ */
+public void pushJarToAndroid(String localPath) {
+    System.out.println(&quot;--------push jar 开始---------&quot;);
+    localPath = &quot;\&quot;&quot; + localPath + &quot;\&quot;&quot;;
+    System.out.println(&quot;jar包路径:&quot; + localPath);
+    String pushCmd = &quot;adb push &quot; + localPath + &quot; /data/local/tmp/&quot;;
+    execCmd(pushCmd);
+    System.out.println(&quot;--------push jar 完成---------&quot;);
+}
+
+/**
+ * 测试方法
+ *
+ * @param jarName
+ *            jar包名
+ * @param testName
+ *            testName
+ */
+public void runTest(String jarName, String testName) {
+    System.out.println(&quot;--------测试方法 开始---------&quot;);
+    String runCmd = &quot;adb shell uiautomator runtest &quot;;
+    String testCmd = jarName + &quot;.jar &quot; + &quot;--nohup -c &quot; + testName;
+    execCmd(runCmd + testCmd);
+    System.out.println(&quot;--------测试方法 完成---------&quot;);
+}
+
+/**
+ * 获取WorkSpace目录
+ *
+ * @return WorkSpace目录
+ */
+public String getWorkSpase() {
+    File directory = new File(&quot;&quot;);
+    return directory.getAbsolutePath();
+}
+
+/**
+ * Shell命令封装类
+ *
+ * @param cmd
+ *            Shell命令
+ */
+public void execCmd(String cmd) {
+    System.out.println(&quot;ExecCmd:&quot; + cmd);
+    try {
+        Process p = Runtime.getRuntime().exec(cmd);
+        // 执行成功返回流
+        InputStream input = p.getInputStream();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(
+                input, &quot;GBK&quot;));
+        String line;
+        while ((line = reader.readLine()) != null) {
+            System.out.println(line);
+        }
+        // 执行失败返回流
+        InputStream errorInput = p.getErrorStream();
+        BufferedReader errorReader = new BufferedReader(
+                new InputStreamReader(errorInput, &quot;GBK&quot;));
+        String eline;
+        while ((eline = errorReader.readLine()) != null) {
+            System.out.println(eline);
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
+/**
+ * 重新写回Build.xml
+ *
+ * @param path
+ *            path
+ * @param content
+ *            content
+ */
+public void rewriteBuildxml(String path, String content) {
+    File dirFile = new File(path);
+    if (!dirFile.exists()) {
+        dirFile.mkdir();
+    }
+    try {
+        BufferedWriter bw1 = new BufferedWriter(new FileWriter(path));
+        bw1.write(content);
+        bw1.flush();
+        bw1.close();
+    } catch (IOException e) {
+        e.printStackTrace();
+        }
+    }
+}
+</code></pre><ul>
+<li>工具类各参数说明:<br><img src="http://occcfufho.bkt.clouddn.com/16-8-30/74294878.jpg" alt=""></li>
+</ul>
+<p>举个例子:</p>
+<pre><code>//只需要在测试类中new一个UiAutomatorTool，并指定jar包名、包名、用例名、Android id即可。 
+接下来，只需要运行这样Java程序，就完成了整个过程的自动化，一键编译、一键运行。
+
+public class AutoTest extends UiAutomatorTestCase {
+
+    public static void main(String[] args) {
+        new UiAutomatorTool(&quot;Demo&quot;, &quot;com.hj.autotest.AutoTest&quot;, &quot;testUiSelector&quot;, &quot;30&quot;);
+    }
+    ……
+}
+</code></pre><h3 id="4-UiAutomator测试用例的编写"><a href="#4-UiAutomator测试用例的编写" class="headerlink" title="4.UiAutomator测试用例的编写."></a>4.UiAutomator测试用例的编写.</h3><h3 id="UiAutomator常用api"><a href="#UiAutomator常用api" class="headerlink" title="UiAutomator常用api"></a>UiAutomator常用api</h3><h4 id="UiAutomator基本对象之UiDevice"><a href="#UiAutomator基本对象之UiDevice" class="headerlink" title="UiAutomator基本对象之UiDevice"></a>UiAutomator基本对象之UiDevice</h4><p>通常用于获取系统的设备信息、系统按键、全局操作等。</p>
+<ul>
+<li>获取坐标参数:</li>
+</ul>
+<p><img src="http://occcfufho.bkt.clouddn.com/16-8-30/80242091.jpg" alt=""></p>
+<ul>
+<li>系统信息:</li>
+</ul>
+<p><img src="http://occcfufho.bkt.clouddn.com/16-8-30/57950852.jpg" alt=""></p>
+<ul>
+<li>滑动、拖拽:</li>
+</ul>
+<p><img src="http://occcfufho.bkt.clouddn.com/16-8-30/91482049.jpg" alt=""></p>
+<ul>
+<li>系统按键:</li>
+</ul>
+<p><img src="http://occcfufho.bkt.clouddn.com/16-8-30/37963252.jpg" alt=""></p>
+<ul>
+<li>等待窗口:</li>
+</ul>
+<p><img src="http://occcfufho.bkt.clouddn.com/16-8-30/25640263.jpg" alt=""></p>
+<h4 id="UiAutomator基本对象之UiSelector"><a href="#UiAutomator基本对象之UiSelector" class="headerlink" title="UiAutomator基本对象之UiSelector"></a>UiAutomator基本对象之UiSelector</h4><blockquote>
+<p>通常使用UiSelector，通过各种属性节点和关系来定位组件，类似SQL语句的where条件。</p>
+</blockquote>
+<p>uiautomatorviewer</p>
+<p>要查看界面UI元素的层级关系，我们需要使用SDK/tools/下面的uiautomatorviewer工具来帮助我们进行查看，运行uiautomatorviewer，点击dump，我们就可以获取当前界面的UI快照。<br>示例图:<br><img src="http://occcfufho.bkt.clouddn.com/16-8-30/98710941.jpg" alt=""> </p>
+<p>通过uiautomatorviewer，我们可以找到很多对象的属性，上图右下角的方框中的，都是对象所具有的属性。我们可以通过这些属性来定位需要的元素对象，这里要注意的是，uiautomator可以使用链式查找，即一个条件无法定位，那么可以通过多个条件组合，来定位一个元素。</p>
+<ul>
+<li>通过text、description属性定位:</li>
+</ul>
+<p><img src="http://occcfufho.bkt.clouddn.com/16-8-30/76288023.jpg" alt=""></p>
+<ul>
+<li>通过resourceId定位:</li>
+</ul>
+<p><img src="http://occcfufho.bkt.clouddn.com/16-8-30/38514192.jpg" alt=""></p>
+<ul>
+<li>通过class、package定位:</li>
+</ul>
+<p>这种方式适用于当前页面上只有一种类型的组件的情况，例如只有一个ListView</p>
+<p><img src="http://occcfufho.bkt.clouddn.com/16-8-30/14127274.jpg" alt=""></p>
+<ul>
+<li>通过index、instance定位</li>
+</ul>
+<p><img src="http://occcfufho.bkt.clouddn.com/16-8-30/57352620.jpg" alt=""></p>
+<ul>
+<li>通过其它属性定位</li>
+</ul>
+<p><img src="http://occcfufho.bkt.clouddn.com/16-8-30/43445204.jpg" alt=""><br>对象的所有属性都可以使用，不再列举</p>
+<h4 id="UiAutomator基本对象之UIObject"><a href="#UiAutomator基本对象之UIObject" class="headerlink" title="UiAutomator基本对象之UIObject"></a>UiAutomator基本对象之UIObject</h4><ul>
+<li>UIObject是UiAutomator的核心属性之一。</li>
+<li>它代表了整个UI界面中的所有对象元素。 </li>
+<li><p>它的功能包括：获取UI元素，点击、拖拽、滑动、对象属性判断、手势等</p>
+</li>
+<li><p>点击与长按</p>
+</li>
+</ul>
+<p><img src="http://occcfufho.bkt.clouddn.com/16-8-30/3964140.jpg" alt=""></p>
+<ul>
+<li>拖拽与滑动</li>
+</ul>
+<p><img src="http://occcfufho.bkt.clouddn.com/16-8-30/88907122.jpg" alt=""></p>
+<ul>
+<li>文本输入与清除</li>
+</ul>
+<p><img src="http://occcfufho.bkt.clouddn.com/16-8-30/23818434.jpg" alt=""></p>
+<ul>
+<li>获取对象属性</li>
+</ul>
+<p><img src="http://occcfufho.bkt.clouddn.com/16-8-30/98409436.jpg" alt=""><br>还有很多，不列举了。</p>
+<ul>
+<li>获取对象属性状态</li>
+</ul>
+<p><img src="http://occcfufho.bkt.clouddn.com/16-8-30/4080810.jpg" alt=""><br>还有很多，不列举了。</p>
+<ul>
+<li>获取对象存在状态</li>
+</ul>
+<p><img src="http://occcfufho.bkt.clouddn.com/16-8-30/34499682.jpg" alt=""></p>
+<ul>
+<li>手势状态</li>
+</ul>
+<p><img src="http://occcfufho.bkt.clouddn.com/16-8-30/88845205.jpg" alt=""></p>
+<h4 id="UiAutomator基本对象之UIScrollable"><a href="#UiAutomator基本对象之UIScrollable" class="headerlink" title="UiAutomator基本对象之UIScrollable"></a>UiAutomator基本对象之UIScrollable</h4><ul>
+<li>滚动</li>
+</ul>
+<p><img src="http://occcfufho.bkt.clouddn.com/16-8-30/23792433.jpg" alt=""></p>
+<ul>
+<li>获取列表子元素</li>
+</ul>
+<p><img src="http://occcfufho.bkt.clouddn.com/16-8-30/44719596.jpg" alt=""></p>
+<ul>
+<li>滚动方向</li>
+</ul>
+<p><img src="http://occcfufho.bkt.clouddn.com/16-8-30/26782283.jpg" alt=""></p>
+<h4 id="UiAutomator基本对象之UICollection"><a href="#UiAutomator基本对象之UICollection" class="headerlink" title="UiAutomator基本对象之UICollection"></a>UiAutomator基本对象之UICollection</h4><ul>
+<li>通常用于获取满足某种搜索条件的组件集合，通过链式搜索确定最终需要的组件。<br>先按照一定的条件枚举容器内的子元素，再从符合条件的子元素中进一步定位。<br>一般使用容器类组件作为父类，用于寻找不好定位的子元素。</li>
+</ul>
+<p>示例代码:</p>
+<blockquote>
+<p>UiCollection collection=new UiCollection(new UiSelector().className(“android.widget.ListView”));<br>UiSelector childPattern=new UiSelector().className(“android.widget.TextView”);<br>String text=”Music”;<br>UiObject music=collection.getChildByText(childPattern, text);<br>music.click();</p>
+</blockquote>
+<h4 id="UiAutomator基本对象之UiWatcher"><a href="#UiAutomator基本对象之UiWatcher" class="headerlink" title="UiAutomator基本对象之UiWatcher"></a>UiAutomator基本对象之UiWatcher</h4><ul>
+<li><p>通常我们会让脚本来按照我们所需要的顺序来执行，但有时候，总有一些天灾人祸，比如10086发短信来了。<br>所以，我们的脚本必须要有一定的容错性。</p>
+</li>
+<li><p>UiWatcher正是这样一个容错的对象，当我们在顺序执行脚本时，如果中间突然插入了一些不明事件，我们可以使用UiWatcher来拦截异常，处理完异常后，再返回原来的脚本执行顺序。</p>
+</li>
+</ul>
+<h4 id="UiAutomator基本对象之Configuration"><a href="#UiAutomator基本对象之Configuration" class="headerlink" title="UiAutomator基本对象之Configuration"></a>UiAutomator基本对象之Configuration</h4><ul>
+<li>Configuration，自然是对默认操作的配置，通常情况下，我们使用默认的Configuration就足够了，当然，如果你有一些特殊需求，就可以通过Configuration类来设置。它能更改我们前面提到的所有默认属性的设置。包括默认延迟、输入延迟、等待超时等等。</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/自动化-测试-UiAutomator/" rel="tag">#自动化,测试,UiAutomator</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/25/AndroidStudio配置NDK开发环境/" rel="next" title="AndroidStudio配置NDK开发环境">
+                <i class="fa fa-chevron-left"></i> AndroidStudio配置NDK开发环境
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/31/Android自动化测试/"
+           data-title="Android自动化测试" data-url="http://yoursite.com/2016/08/31/Android自动化测试/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://occcfufho.bkt.clouddn.com/16-8-23/26110035.jpg"
+               alt="戴先森" />
+          <p class="site-author-name" itemprop="name">戴先森</p>
+          <p class="site-description motion-element" itemprop="description">Everything is going on,but don't give up trying.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#自动化测试主流框架对比"><span class="nav-number">1.</span> <span class="nav-text">自动化测试主流框架对比</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Monkey"><span class="nav-number">1.1.</span> <span class="nav-text">1.Monkey</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-MonkeyRunner"><span class="nav-number">1.2.</span> <span class="nav-text">2.MonkeyRunner</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Instrumentation"><span class="nav-number">1.3.</span> <span class="nav-text">3. Instrumentation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-UiAutomator"><span class="nav-number">1.4.</span> <span class="nav-text">4.UiAutomator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Espresso"><span class="nav-number">1.5.</span> <span class="nav-text">5.Espresso</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Selendroid"><span class="nav-number">1.6.</span> <span class="nav-text">6.Selendroid</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Robotium"><span class="nav-number">1.7.</span> <span class="nav-text">7.Robotium</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-Athrun"><span class="nav-number">1.8.</span> <span class="nav-text">8.Athrun</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-Appium"><span class="nav-number">1.9.</span> <span class="nav-text">9.Appium</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过UiAutomator-搭建自动化测试环境"><span class="nav-number">2.</span> <span class="nav-text">通过UiAutomator 搭建自动化测试环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-UiAutomator环境搭建"><span class="nav-number">2.1.</span> <span class="nav-text">1. UiAutomator环境搭建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-配置工程环境"><span class="nav-number">2.2.</span> <span class="nav-text">2. 配置工程环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-让自动化测试更加自动化"><span class="nav-number">2.3.</span> <span class="nav-text">3.让自动化测试更加自动化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-UiAutomator测试用例的编写"><span class="nav-number">2.4.</span> <span class="nav-text">4.UiAutomator测试用例的编写.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UiAutomator常用api"><span class="nav-number">2.5.</span> <span class="nav-text">UiAutomator常用api</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#UiAutomator基本对象之UiDevice"><span class="nav-number">2.5.1.</span> <span class="nav-text">UiAutomator基本对象之UiDevice</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UiAutomator基本对象之UiSelector"><span class="nav-number">2.5.2.</span> <span class="nav-text">UiAutomator基本对象之UiSelector</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UiAutomator基本对象之UIObject"><span class="nav-number">2.5.3.</span> <span class="nav-text">UiAutomator基本对象之UIObject</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UiAutomator基本对象之UIScrollable"><span class="nav-number">2.5.4.</span> <span class="nav-text">UiAutomator基本对象之UIScrollable</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UiAutomator基本对象之UICollection"><span class="nav-number">2.5.5.</span> <span class="nav-text">UiAutomator基本对象之UICollection</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UiAutomator基本对象之UiWatcher"><span class="nav-number">2.5.6.</span> <span class="nav-text">UiAutomator基本对象之UiWatcher</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UiAutomator基本对象之Configuration"><span class="nav-number">2.5.7.</span> <span class="nav-text">UiAutomator基本对象之Configuration</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">戴先森</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"daixiansen.duoshuo.com"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
