@@ -85,7 +85,6 @@
 
 
 <meta name="description" content="Android开发中无处不在的设计模式——观察者模式观察者模式的定义
-
 定义对象间的一种一对多的依赖关系，当一个对象的状态发送改变时，所有依赖于它的对象都能得到通知并被自动更新
 
 定义往往是抽象的，要深刻的理解定义，你需要自己动手实践一下。
@@ -93,13 +92,12 @@
 
 情景1
 
-有一种短信服务，比如天气预报服务，一旦你订阅该服务，你只需按月付费，付完费后，每天一旦有天气信息更新，它就会及时向你发送最新的天">
+有一种短信服务，比如天气预报服务，一旦你订阅该服务，你只需按月付费，付完费后，每天一旦有天气信息更新，它就会及时向你发送最新的天气">
 <meta property="og:type" content="article">
 <meta property="og:title" content="观察者模式">
 <meta property="og:url" content="http://yoursite.com/2016/09/04/观察者模式/index.html">
 <meta property="og:site_name" content="Davil & Tian">
 <meta property="og:description" content="Android开发中无处不在的设计模式——观察者模式观察者模式的定义
-
 定义对象间的一种一对多的依赖关系，当一个对象的状态发送改变时，所有依赖于它的对象都能得到通知并被自动更新
 
 定义往往是抽象的，要深刻的理解定义，你需要自己动手实践一下。
@@ -107,12 +105,11 @@
 
 情景1
 
-有一种短信服务，比如天气预报服务，一旦你订阅该服务，你只需按月付费，付完费后，每天一旦有天气信息更新，它就会及时向你发送最新的天">
-<meta property="og:updated_time" content="2016-09-04T15:04:30.201Z">
+有一种短信服务，比如天气预报服务，一旦你订阅该服务，你只需按月付费，付完费后，每天一旦有天气信息更新，它就会及时向你发送最新的天气">
+<meta property="og:updated_time" content="2016-09-04T15:10:24.696Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="观察者模式">
 <meta name="twitter:description" content="Android开发中无处不在的设计模式——观察者模式观察者模式的定义
-
 定义对象间的一种一对多的依赖关系，当一个对象的状态发送改变时，所有依赖于它的对象都能得到通知并被自动更新
 
 定义往往是抽象的，要深刻的理解定义，你需要自己动手实践一下。
@@ -120,7 +117,7 @@
 
 情景1
 
-有一种短信服务，比如天气预报服务，一旦你订阅该服务，你只需按月付费，付完费后，每天一旦有天气信息更新，它就会及时向你发送最新的天">
+有一种短信服务，比如天气预报服务，一旦你订阅该服务，你只需按月付费，付完费后，每天一旦有天气信息更新，它就会及时向你发送最新的天气">
 
 
 
@@ -359,8 +356,7 @@
       
 
       
-        <h2 id="Android开发中无处不在的设计模式——观察者模式"><a href="#Android开发中无处不在的设计模式——观察者模式" class="headerlink" title="Android开发中无处不在的设计模式——观察者模式"></a>Android开发中无处不在的设计模式——观察者模式</h2><p>观察者模式的定义</p>
-<blockquote>
+        <h2 id="Android开发中无处不在的设计模式——观察者模式"><a href="#Android开发中无处不在的设计模式——观察者模式" class="headerlink" title="Android开发中无处不在的设计模式——观察者模式"></a>Android开发中无处不在的设计模式——观察者模式</h2><h3 id="观察者模式的定义"><a href="#观察者模式的定义" class="headerlink" title="观察者模式的定义"></a>观察者模式的定义</h3><blockquote>
 <p>定义对象间的一种一对多的依赖关系，当一个对象的状态发送改变时，所有依赖于它的对象都能得到通知并被自动更新</p>
 </blockquote>
 <p>定义往往是抽象的，要深刻的理解定义，你需要自己动手实践一下。</p>
@@ -405,56 +401,11 @@
 <p>观察者2：Weather{description=’多云转阴’} </p>
 <p>观察者2：Weather{description=’台风’}</p>
 </blockquote>
-<p>接下来我们看看观察者模式在Android中的应用。我们从最简单的开始。还记得我们为一个Button设置点击事件的代码吗。</p>
-<pre><code>Button btn=new Button(this);
-btn.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        Log.e(&quot;TAG&quot;,&quot;click&quot;);
-    }
-});
-</code></pre><p>其实严格意义上讲，这个最多算是回调，但是我们可以将其看成是一对一的观察者模式，即只有一个观察者。</p>
-<p>其实只要是set系列的设置监听器的方法最多都只能算回调，但是有一些监听器式add进去的，这种就是观察者模式了，比如RecyclerView中的addOnScrollListener方法</p>
-<pre><code>private List&lt;OnScrollListener&gt; mScrollListeners;
-public void addOnScrollListener(OnScrollListener listener) {
-    if (mScrollListeners == null) {
-        mScrollListeners = new ArrayList&lt;OnScrollListener&gt;();
-    }
-    mScrollListeners.add(listener);
-}
-public void removeOnScrollListener(OnScrollListener listener) {
-    if (mScrollListeners != null) {
-        mScrollListeners.remove(listener);
-    }
-}
-public void clearOnScrollListeners() {
-    if (mScrollListeners != null) {
-        mScrollListeners.clear();
-    }
-}
-</code></pre><p>然后有滚动事件时便会触发观察者进行方法回调</p>
-<pre><code>public abstract static class OnScrollListener {
-public void onScrollStateChanged(RecyclerView recyclerView, int newState){}
-public void onScrolled(RecyclerView recyclerView, int dx, int dy){}
-}
-
-void dispatchOnScrolled(int hresult, int vresult) {
-    //...
-    if (mScrollListeners != null) {
-        for (int i = mScrollListeners.size() - 1; i &gt;= 0; i--) {
-            mScrollListeners.get(i).onScrolled(this, hresult, vresult);
-        }
-    }
-}
-void dispatchOnScrollStateChanged(int state) {
-    //...
-    if (mScrollListeners != null) {
-        for (int i = mScrollListeners.size() - 1; i &gt;= 0; i--) {
-            mScrollListeners.get(i).onScrollStateChanged(this, state);
-        }
-    }
-}
-</code></pre><p>类似的方法很多很多，都是add监听器系列的方法，这里也不再举例。</p>
+<p>接下来我们看看观察者模式在Android中的应用。我们从最简单的开始。还记得我们为一个Button设置点击事件的代码吗。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">   Button btn=<span class="keyword">new</span> Button(<span class="keyword">this</span>);</div><div class="line">btn.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">        Log.e(<span class="string">"TAG"</span>,<span class="string">"click"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>其实严格意义上讲，这个最多算是回调，但是我们可以将其看成是一对一的观察者模式，即只有一个观察者。</p>
+<p>其实只要是set系列的设置监听器的方法最多都只能算回调，但是有一些监听器式add进去的，这种就是观察者模式了，比如RecyclerView中的addOnScrollListener方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">   <span class="keyword">private</span> List&lt;OnScrollListener&gt; mScrollListeners;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addOnScrollListener</span><span class="params">(OnScrollListener listener)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (mScrollListeners == <span class="keyword">null</span>) &#123;</div><div class="line">        mScrollListeners = <span class="keyword">new</span> ArrayList&lt;OnScrollListener&gt;();</div><div class="line">    &#125;</div><div class="line">    mScrollListeners.add(listener);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeOnScrollListener</span><span class="params">(OnScrollListener listener)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (mScrollListeners != <span class="keyword">null</span>) &#123;</div><div class="line">        mScrollListeners.remove(listener);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clearOnScrollListeners</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (mScrollListeners != <span class="keyword">null</span>) &#123;</div><div class="line">        mScrollListeners.clear();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后有滚动事件时便会触发观察者进行方法回调<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">   <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">OnScrollListener</span> </span>&#123;</div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onScrollStateChanged</span><span class="params">(RecyclerView recyclerView, <span class="keyword">int</span> newState)</span></span>&#123;&#125;</div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onScrolled</span><span class="params">(RecyclerView recyclerView, <span class="keyword">int</span> dx, <span class="keyword">int</span> dy)</span></span>&#123;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dispatchOnScrolled</span><span class="params">(<span class="keyword">int</span> hresult, <span class="keyword">int</span> vresult)</span> </span>&#123;</div><div class="line">    <span class="comment">//...</span></div><div class="line">    <span class="keyword">if</span> (mScrollListeners != <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = mScrollListeners.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</div><div class="line">            mScrollListeners.get(i).onScrolled(<span class="keyword">this</span>, hresult, vresult);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dispatchOnScrollStateChanged</span><span class="params">(<span class="keyword">int</span> state)</span> </span>&#123;</div><div class="line">    <span class="comment">//...</span></div><div class="line">    <span class="keyword">if</span> (mScrollListeners != <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = mScrollListeners.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</div><div class="line">            mScrollListeners.get(i).onScrollStateChanged(<span class="keyword">this</span>, state);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>类似的方法很多很多，都是add监听器系列的方法，这里也不再举例。</p>
 <p>还有一个地方就是Android的广播机制，其本质也是观察者模式，这里为了简单方便，直接拿本地广播的代码说明，即LocalBroadcastManager。</p>
 <p>我们平时使用本地广播主要就是下面四个方法</p>
 <blockquote>
@@ -469,30 +420,10 @@ void dispatchOnScrollStateChanged(int state) {
 <p>EventBus.getDefault().post(Object event);</p>
 </blockquote>
 <p>内部源码也不展开了。接下来看一下重量级的库，它就是RxJava，由于学习曲线的陡峭，这个库让很多人望而止步。</p>
-<p>创建一个被观察者</p>
-<pre><code>Observable&lt;String&gt; myObservable = Observable.create(  
-    new Observable.OnSubscribe&lt;String&gt;() {  
-        @Override  
-        public void call(Subscriber&lt;? super String&gt; sub) {  
-            sub.onNext(&quot;Hello, world!&quot;);  
-            sub.onCompleted();  
-        }  
-    }  
-);
-</code></pre><p>创建一个观察者，也就是订阅者</p>
-<pre><code>Subscriber&lt;String&gt; mySubscriber = new Subscriber&lt;String&gt;() {  
-@Override  
-    public void onNext(String s) { System.out.println(s); }  
-
-    @Override  
-    public void onCompleted() { }  
-
-    @Override  
-    public void onError(Throwable e) { }  
-}; 
-</code></pre><p>观察者进行事件的订阅</p>
-<pre><code>myObservable.subscribe(mySubscriber); 
-</code></pre><p>具体源码也不展开，不过RxJava这个开源库的源码个人还是建议很值得去看一看的。</p>
+<p>创建一个被观察者<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">Observable&lt;String&gt; myObservable = Observable.create(  </div><div class="line">    <span class="keyword">new</span> Observable.OnSubscribe&lt;String&gt;() &#123;  </div><div class="line">        <span class="meta">@Override</span>  </div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">(Subscriber&lt;? <span class="keyword">super</span> String&gt; sub)</span> </span>&#123;  </div><div class="line">            sub.onNext(<span class="string">"Hello, world!"</span>);  </div><div class="line">            sub.onCompleted();  </div><div class="line">        &#125;  </div><div class="line">    &#125;  </div><div class="line">);</div></pre></td></tr></table></figure></p>
+<p>创建一个观察者，也就是订阅者<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">   Subscriber&lt;String&gt; mySubscriber = <span class="keyword">new</span> Subscriber&lt;String&gt;() &#123;  </div><div class="line">   <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNext</span><span class="params">(String s)</span> </span>&#123; System.out.println(s); &#125;  </div><div class="line"></div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCompleted</span><span class="params">()</span> </span>&#123; &#125;  </div><div class="line"></div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable e)</span> </span>&#123; &#125;  </div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>观察者进行事件的订阅<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">myObservable.subscribe(mySubscriber);</div></pre></td></tr></table></figure></p>
+<p>具体源码也不展开，不过RxJava这个开源库的源码个人还是建议很值得去看一看的。</p>
 
       
     </div>
@@ -648,7 +579,7 @@ void dispatchOnScrollStateChanged(int state) {
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Android开发中无处不在的设计模式——观察者模式"><span class="nav-number">1.</span> <span class="nav-text">Android开发中无处不在的设计模式——观察者模式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Android开发中无处不在的设计模式——观察者模式"><span class="nav-number">1.</span> <span class="nav-text">Android开发中无处不在的设计模式——观察者模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#观察者模式的定义"><span class="nav-number">1.1.</span> <span class="nav-text">观察者模式的定义</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
