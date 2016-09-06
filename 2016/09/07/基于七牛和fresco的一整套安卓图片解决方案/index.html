@@ -1,0 +1,762 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="图片处理," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="1. apk内部图片优化：控制apk大小几种图片的主要特点:
+webp：文件最小，有透明通道
+jpg：文件较小，无透明通道
+png：文件较大，有透明通道
+
+对于小图标
+小图标大多是不规则形状，显示时多会要求能看到后方背景，所以需要有透明通道，一般使用png。尺寸小，没必要转webp。如果图标后方背景为纯色且确定，那么直接用jpg就可以了。
+
+UI给的png图应当再通过tinypng或者“智图”将图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于七牛和fresco的一整套安卓图片解决方案">
+<meta property="og:url" content="http://yoursite.com/2016/09/07/基于七牛和fresco的一整套安卓图片解决方案/index.html">
+<meta property="og:site_name" content="Davil & Tian">
+<meta property="og:description" content="1. apk内部图片优化：控制apk大小几种图片的主要特点:
+webp：文件最小，有透明通道
+jpg：文件较小，无透明通道
+png：文件较大，有透明通道
+
+对于小图标
+小图标大多是不规则形状，显示时多会要求能看到后方背景，所以需要有透明通道，一般使用png。尺寸小，没必要转webp。如果图标后方背景为纯色且确定，那么直接用jpg就可以了。
+
+UI给的png图应当再通过tinypng或者“智图”将图">
+<meta property="og:image" content="http://img.blog.csdn.net/20160809170005029">
+<meta property="og:updated_time" content="2016-09-06T16:33:54.320Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于七牛和fresco的一整套安卓图片解决方案">
+<meta name="twitter:description" content="1. apk内部图片优化：控制apk大小几种图片的主要特点:
+webp：文件最小，有透明通道
+jpg：文件较小，无透明通道
+png：文件较大，有透明通道
+
+对于小图标
+小图标大多是不规则形状，显示时多会要求能看到后方背景，所以需要有透明通道，一般使用png。尺寸小，没必要转webp。如果图标后方背景为纯色且确定，那么直接用jpg就可以了。
+
+UI给的png图应当再通过tinypng或者“智图”将图">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20160809170005029">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/09/07/基于七牛和fresco的一整套安卓图片解决方案/"/>
+
+  <title> 基于七牛和fresco的一整套安卓图片解决方案 | Davil & Tian </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Davil & Tian</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                基于七牛和fresco的一整套安卓图片解决方案
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-07T00:04:33+08:00" content="2016-09-07">
+              2016-09-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/07/基于七牛和fresco的一整套安卓图片解决方案/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/07/基于七牛和fresco的一整套安卓图片解决方案/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-apk内部图片优化：控制apk大小"><a href="#1-apk内部图片优化：控制apk大小" class="headerlink" title="1. apk内部图片优化：控制apk大小"></a>1. apk内部图片优化：控制apk大小</h2><h3 id="几种图片的主要特点"><a href="#几种图片的主要特点" class="headerlink" title="几种图片的主要特点:"></a>几种图片的主要特点:</h3><ul>
+<li>webp：文件最小，有透明通道</li>
+<li>jpg：文件较小，无透明通道</li>
+<li>png：文件较大，有透明通道</li>
+</ul>
+<h3 id="对于小图标"><a href="#对于小图标" class="headerlink" title="对于小图标"></a>对于小图标</h3><ol>
+<li><p>小图标大多是不规则形状，显示时多会要求能看到后方背景，所以需要有透明通道，一般使用png。尺寸小，没必要转webp。<br>如果图标后方背景为纯色且确定，那么直接用jpg就可以了。</p>
+</li>
+<li><p>UI给的png图应当再通过tinypng或者“智图”将图标文件大小缩小一些再放入drawable文件夹中。</p>
+</li>
+</ol>
+<h3 id="大图，背景图，默认图"><a href="#大图，背景图，默认图" class="headerlink" title="大图，背景图，默认图"></a>大图，背景图，默认图</h3><ul>
+<li>上传到“智图”，转成webp</li>
+</ul>
+<h3 id="ui设计图尺寸和切图：如何只切一套图就够用？"><a href="#ui设计图尺寸和切图：如何只切一套图就够用？" class="headerlink" title="ui设计图尺寸和切图：如何只切一套图就够用？"></a>ui设计图尺寸和切图：如何只切一套图就够用？</h3><ol>
+<li><p>查友盟统计数据知道，市场主流屏幕为720p和1080p</p>
+</li>
+<li><p>ui按1080p的尺寸来做设计图，在此基础上切一套图，放于xxhdpi下即可适配大多数屏幕了</p>
+</li>
+<li><p>一些规则的图案，能用shape画就没必要切图</p>
+</li>
+</ol>
+<h2 id="2-图片选择和裁剪"><a href="#2-图片选择和裁剪" class="headerlink" title="2.图片选择和裁剪"></a>2.图片选择和裁剪</h2><h3 id="裁剪"><a href="#裁剪" class="headerlink" title="裁剪"></a>裁剪</h3><ul>
+<li>系统的图片裁剪被被各家厂商改得面目全非.试用了github的几家,发现<a href="https://github.com/Yalantis/uCrop/" target="_blank" rel="external">ucrop</a>是比较好的,一个基于此的封装类:<a href="https://github.com/glassLake/CropUtils" target="_blank" rel="external">CropUtils</a></li>
+</ul>
+<p>头像的裁剪效果:</p>
+<p><img src="http://img.blog.csdn.net/20160809170005029" alt=""></p>
+<h3 id="多图选择"><a href="#多图选择" class="headerlink" title="多图选择"></a>多图选择</h3><ul>
+<li><p>系统内置的图片选择只支持选单图,于是很多人做出了多图选择的框架,但很多做得不纯粹,又有图片选择又有裁剪的,这个只做图片选择</p>
+</li>
+<li><p>基于<a href="https://github.com/donglua/PhotoPicker/" target="_blank" rel="external">photoPicker</a>修改了一下ui,做得类似微信,非常流畅:<a href="https://github.com/glassLake/PhotoPicker" target="_blank" rel="external">PhotoPicker</a></p>
+</li>
+</ul>
+<h3 id="图片上传"><a href="#图片上传" class="headerlink" title="图片上传"></a>图片上传</h3><ul>
+<li><p>上传前根据期望的最终的显示大小进行压缩,压缩算法可参考:<a href="https://github.com/Curzibn/Luban" target="_blank" rel="external">luban</a></p>
+</li>
+<li><p>为了便于拉取图片前就知道图片尺寸,上传所指定的图片路径中需带图片尺寸信息，比如 www.xxyy.com\landscape\jsjidsj-w-h-1080-1920.jpg</p>
+</li>
+</ul>
+<h3 id="服务器端的图片处理api-七牛"><a href="#服务器端的图片处理api-七牛" class="headerlink" title="服务器端的图片处理api-七牛"></a>服务器端的图片处理api-七牛</h3><ul>
+<li><p>服务器端要能够根据图片路径后方拼接的参数对图片进行处理后返回.</p>
+</li>
+<li><p>最常用的处理方式是:对原图缩小和裁剪,以及图片格式转换.</p>
+</li>
+</ul>
+<h4 id="缩小和裁剪"><a href="#缩小和裁剪" class="headerlink" title="缩小和裁剪"></a>缩小和裁剪</h4><ul>
+<li><p>比如,请求上面那张图片作为头像,头像组件的大小是80x80像素,那么可以:<br>www.xxyy.com\landscape\jsjidsj-w-h-1080-1920.jpg?imageMogr2/thumbnail/!80x80r/crop/80x80/</p>
+</li>
+<li><p>操作的意义是:限定短边,生成不小于80x80的缩略图:这时,会生成短边为80,长边为80<em>1920/1080.<br>然后,裁剪成80</em>80的图.(默认居中裁剪)</p>
+</li>
+</ul>
+<h4 id="格式转换"><a href="#格式转换" class="headerlink" title="格式转换:"></a>格式转换:</h4><ul>
+<li>如果是用于动态更换的图标,那么保持原来的png格式.如果图片只用于展示,无需透明度,那么转换成jpg.</li>
+</ul>
+<h4 id="gif图片"><a href="#gif图片" class="headerlink" title="gif图片:"></a>gif图片:</h4><ul>
+<li>七牛能够对gif图片进行缩略和剪切，也能转成jpg格式。</li>
+</ul>
+<p>通过这两步步操作,能够将网络传输的流量最小化.省七牛的流量费,省用户的流量和加载时间.</p>
+<p>封装的工具类: <a href="https://github.com/glassLake/ServerPicUtils" target="_blank" rel="external">github地址</a></p>
+<h3 id="客户端-fresco"><a href="#客户端-fresco" class="headerlink" title="客户端:fresco"></a>客户端:fresco</h3><ul>
+<li>三级缓存框架内部已经实现,无需赘言.</li>
+</ul>
+<p>其具体的使用技巧见博客:</p>
+<p><a href="http://blog.csdn.net/hss01248/article/details/51757989" target="_blank" rel="external">Fresco图片加载框架的介绍,相关开源库以及工具类的封装</a></p>
+<h4 id="要点1-通过downsampling-resizing-来最大化减少bitmap占用的内存"><a href="#要点1-通过downsampling-resizing-来最大化减少bitmap占用的内存" class="headerlink" title="要点1:通过downsampling + resizing 来最大化减少bitmap占用的内存"></a>要点1:通过downsampling + resizing 来最大化减少bitmap占用的内存</h4><p>框架初始化时设置downsampling为true,就开启了downsampling.</p>
+<p>构建图片请求时,传入目标宽高,构建Resization:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">ImageRequestBuilder.newBuilderWithSource(uri)</div><div class="line">                   .setPostprocessor(processor)</div><div class="line">                   .setResizeOptions(<span class="keyword">new</span> ResizeOptions(width,height))</div></pre></td></tr></table></figure></p>
+<p>最终能达到的效果是,不论是png,jpg,webp,都能按照指定的宽高来向下采样生成该指定宽高bitmap.如果没有指定ResizeOptions,那么生成的bitmap宽高就是图片文件本身的宽高.</p>
+<p>注意两者必须配合使用,如果没有设置downsampling为true,则resizing只对jpg生效.</p>
+<h4 id="要点2-bitmap解码设置成RGB565-以减小内存占用"><a href="#要点2-bitmap解码设置成RGB565-以减小内存占用" class="headerlink" title="要点2 : bitmap解码设置成RGB565,以减小内存占用"></a>要点2 : bitmap解码设置成RGB565,以减小内存占用</h4><p>也是初始化时设置：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">ImagePipelineConfig.newBuilder(context)</div><div class="line">.setBitmapsConfig(Bitmap.Config.RGB_565)</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<h4 id="要点3-gif图片的处理"><a href="#要点3-gif图片的处理" class="headerlink" title="要点3:gif图片的处理"></a>要点3:gif图片的处理</h4><p>编码和显示方法与其他几种常用图片不一样.有几个坑,具体请参考先前的一篇博客:安卓里的gif图片解决方案:<a href="http://blog.csdn.net/hss01248/article/details/52163969" target="_blank" rel="external">Fresco+gif</a></p>
+<p>容器view滑动中和停止后请求的暂停和恢复</p>
+<p>fresco有相关api支持:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Fresco.getImagePipeline().pause();</div><div class="line">Fresco.getImagePipeline().resume();</div></pre></td></tr></table></figure></p>
+<h3 id="图片常见效果"><a href="#图片常见效果" class="headerlink" title="图片常见效果"></a>图片常见效果</h3><h4 id="圆角和圆形"><a href="#圆角和圆形" class="headerlink" title="圆角和圆形"></a>圆角和圆形</h4><ul>
+<li>fresco本身就支持,xml或代码里设置即可.注意gif图片的特殊性,需要特殊处理.</li>
+</ul>
+<h4 id="高斯模糊"><a href="#高斯模糊" class="headerlink" title="高斯模糊"></a>高斯模糊</h4><ul>
+<li>使用开源框架<a href="https://github.com/Commit451/NativeStackBlur" target="_blank" rel="external">NativeStackBlur</a>,能够将一个bitmap高斯模糊后返回</li>
+</ul>
+<p>或者采用为fresco封装好的高斯模糊处理器:<a href="https://github.com/wasabeef/fresco-processors/blob/master/processors/src/main/java/jp/wasabeef/fresco/processors/BlurPostprocessor.java" target="_blank" rel="external">BlurPostprocessor</a></p>
+<h3 id="相关博客-文档"><a href="#相关博客-文档" class="headerlink" title="相关博客/文档"></a>相关博客/文档</h3><p><a href="http://developer.qiniu.com/code/v6/api/kodo-api/image/imagemogr2.html" target="_blank" rel="external">七牛高级图片处理api</a></p>
+<p><a href="http://blog.csdn.net/hss01248/article/details/52155673" target="_blank" rel="external">安卓里的gif图片解决方案:Fresco+gif</a></p>
+<p><a href="http://blog.csdn.net/hss01248/article/details/51757989" target="_blank" rel="external">Fresco图片加载框架的介绍,相关开源库以及工具类的封装</a></p>
+<h3 id="相关工具-网站和github源码"><a href="#相关工具-网站和github源码" class="headerlink" title="相关工具( 网站和github源码)"></a>相关工具( 网站和github源码)</h3><p><a href="http://zhitu.isux.us/" target="_blank" rel="external">智图:png图文件缩小和webp转换</a></p>
+<p><a href="https://github.com/glassLake/CropUtils" target="_blank" rel="external">图片裁剪:CropUtils</a></p>
+<p><a href="https://github.com/glassLake/PhotoPicker" target="_blank" rel="external">图片选择:PhotoPicker</a></p>
+<p><a href="https://github.com/glassLake/ServerPicUtils" target="_blank" rel="external">七牛取图片的工具类github地址</a></p>
+<p><a href="https://github.com/glassLake/FrescoUtlis" target="_blank" rel="external">封装好Fresco工具类</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/图片处理/" rel="tag">#图片处理</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/04/观察者模式/" rel="next" title="观察者模式">
+                <i class="fa fa-chevron-left"></i> 观察者模式
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/07/基于七牛和fresco的一整套安卓图片解决方案/"
+           data-title="基于七牛和fresco的一整套安卓图片解决方案" data-url="http://yoursite.com/2016/09/07/基于七牛和fresco的一整套安卓图片解决方案/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://occcfufho.bkt.clouddn.com/16-8-23/26110035.jpg"
+               alt="戴先森" />
+          <p class="site-author-name" itemprop="name">戴先森</p>
+          <p class="site-description motion-element" itemprop="description">Everything is going on,but don't give up trying.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-apk内部图片优化：控制apk大小"><span class="nav-number">1.</span> <span class="nav-text">1. apk内部图片优化：控制apk大小</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#几种图片的主要特点"><span class="nav-number">1.1.</span> <span class="nav-text">几种图片的主要特点:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对于小图标"><span class="nav-number">1.2.</span> <span class="nav-text">对于小图标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大图，背景图，默认图"><span class="nav-number">1.3.</span> <span class="nav-text">大图，背景图，默认图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ui设计图尺寸和切图：如何只切一套图就够用？"><span class="nav-number">1.4.</span> <span class="nav-text">ui设计图尺寸和切图：如何只切一套图就够用？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-图片选择和裁剪"><span class="nav-number">2.</span> <span class="nav-text">2.图片选择和裁剪</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#裁剪"><span class="nav-number">2.1.</span> <span class="nav-text">裁剪</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多图选择"><span class="nav-number">2.2.</span> <span class="nav-text">多图选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片上传"><span class="nav-number">2.3.</span> <span class="nav-text">图片上传</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器端的图片处理api-七牛"><span class="nav-number">2.4.</span> <span class="nav-text">服务器端的图片处理api-七牛</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#缩小和裁剪"><span class="nav-number">2.4.1.</span> <span class="nav-text">缩小和裁剪</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#格式转换"><span class="nav-number">2.4.2.</span> <span class="nav-text">格式转换:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gif图片"><span class="nav-number">2.4.3.</span> <span class="nav-text">gif图片:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端-fresco"><span class="nav-number">2.5.</span> <span class="nav-text">客户端:fresco</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#要点1-通过downsampling-resizing-来最大化减少bitmap占用的内存"><span class="nav-number">2.5.1.</span> <span class="nav-text">要点1:通过downsampling + resizing 来最大化减少bitmap占用的内存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#要点2-bitmap解码设置成RGB565-以减小内存占用"><span class="nav-number">2.5.2.</span> <span class="nav-text">要点2 : bitmap解码设置成RGB565,以减小内存占用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#要点3-gif图片的处理"><span class="nav-number">2.5.3.</span> <span class="nav-text">要点3:gif图片的处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片常见效果"><span class="nav-number">2.6.</span> <span class="nav-text">图片常见效果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#圆角和圆形"><span class="nav-number">2.6.1.</span> <span class="nav-text">圆角和圆形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高斯模糊"><span class="nav-number">2.6.2.</span> <span class="nav-text">高斯模糊</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关博客-文档"><span class="nav-number">2.7.</span> <span class="nav-text">相关博客/文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关工具-网站和github源码"><span class="nav-number">2.8.</span> <span class="nav-text">相关工具( 网站和github源码)</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">戴先森</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"daixiansen.duoshuo.com"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
