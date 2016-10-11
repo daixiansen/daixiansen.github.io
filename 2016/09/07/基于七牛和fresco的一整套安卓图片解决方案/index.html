@@ -77,7 +77,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/source/images/supermario.png?v=5.0.1" />
 
 
 
@@ -96,7 +96,7 @@ UI给的png图应当再通过tinypng或者“智图”将图">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于七牛和fresco的一整套安卓图片解决方案">
 <meta property="og:url" content="http://yoursite.com/2016/09/07/基于七牛和fresco的一整套安卓图片解决方案/index.html">
-<meta property="og:site_name" content="Davil & Tian">
+<meta property="og:site_name" content="戴先森的私人领域">
 <meta property="og:description" content="1. apk内部图片优化：控制apk大小几种图片的主要特点:
 webp：文件最小，有透明通道
 jpg：文件较小，无透明通道
@@ -107,7 +107,7 @@ png：文件较大，有透明通道
 
 UI给的png图应当再通过tinypng或者“智图”将图">
 <meta property="og:image" content="http://img.blog.csdn.net/20160809170005029">
-<meta property="og:updated_time" content="2016-09-06T16:33:54.320Z">
+<meta property="og:updated_time" content="2016-09-06T16:38:53.470Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于七牛和fresco的一整套安卓图片解决方案">
 <meta name="twitter:description" content="1. apk内部图片优化：控制apk大小几种图片的主要特点:
@@ -142,7 +142,7 @@ UI给的png图应当再通过tinypng或者“智图”将图">
 
   <link rel="canonical" href="http://yoursite.com/2016/09/07/基于七牛和fresco的一整套安卓图片解决方案/"/>
 
-  <title> 基于七牛和fresco的一整套安卓图片解决方案 | Davil & Tian </title>
+  <title> 基于七牛和fresco的一整套安卓图片解决方案 | 戴先森的私人领域 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -173,7 +173,7 @@ UI给的png图应当再通过tinypng或者“智图”将图">
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Davil & Tian</span>
+      <span class="site-title">戴先森的私人领域</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -417,23 +417,23 @@ UI给的png图应当再通过tinypng或者“智图”将图">
 </ul>
 <p>通过这两步步操作,能够将网络传输的流量最小化.省七牛的流量费,省用户的流量和加载时间.</p>
 <p>封装的工具类: <a href="https://github.com/glassLake/ServerPicUtils" target="_blank" rel="external">github地址</a></p>
-<h3 id="客户端-fresco"><a href="#客户端-fresco" class="headerlink" title="客户端:fresco"></a>客户端:fresco</h3><ul>
+<h4 id="客户端-fresco"><a href="#客户端-fresco" class="headerlink" title="客户端:fresco"></a>客户端:fresco</h4><ul>
 <li>三级缓存框架内部已经实现,无需赘言.</li>
 </ul>
 <p>其具体的使用技巧见博客:</p>
 <p><a href="http://blog.csdn.net/hss01248/article/details/51757989" target="_blank" rel="external">Fresco图片加载框架的介绍,相关开源库以及工具类的封装</a></p>
-<h4 id="要点1-通过downsampling-resizing-来最大化减少bitmap占用的内存"><a href="#要点1-通过downsampling-resizing-来最大化减少bitmap占用的内存" class="headerlink" title="要点1:通过downsampling + resizing 来最大化减少bitmap占用的内存"></a>要点1:通过downsampling + resizing 来最大化减少bitmap占用的内存</h4><p>框架初始化时设置downsampling为true,就开启了downsampling.</p>
+<h5 id="要点1-通过downsampling-resizing-来最大化减少bitmap占用的内存"><a href="#要点1-通过downsampling-resizing-来最大化减少bitmap占用的内存" class="headerlink" title="要点1:通过downsampling + resizing 来最大化减少bitmap占用的内存"></a>要点1:通过downsampling + resizing 来最大化减少bitmap占用的内存</h5><p>框架初始化时设置downsampling为true,就开启了downsampling.</p>
 <p>构建图片请求时,传入目标宽高,构建Resization:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">ImageRequestBuilder.newBuilderWithSource(uri)</div><div class="line">                   .setPostprocessor(processor)</div><div class="line">                   .setResizeOptions(<span class="keyword">new</span> ResizeOptions(width,height))</div></pre></td></tr></table></figure></p>
 <p>最终能达到的效果是,不论是png,jpg,webp,都能按照指定的宽高来向下采样生成该指定宽高bitmap.如果没有指定ResizeOptions,那么生成的bitmap宽高就是图片文件本身的宽高.</p>
 <p>注意两者必须配合使用,如果没有设置downsampling为true,则resizing只对jpg生效.</p>
-<h4 id="要点2-bitmap解码设置成RGB565-以减小内存占用"><a href="#要点2-bitmap解码设置成RGB565-以减小内存占用" class="headerlink" title="要点2 : bitmap解码设置成RGB565,以减小内存占用"></a>要点2 : bitmap解码设置成RGB565,以减小内存占用</h4><p>也是初始化时设置：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">ImagePipelineConfig.newBuilder(context)</div><div class="line">.setBitmapsConfig(Bitmap.Config.RGB_565)</div><div class="line">...</div></pre></td></tr></table></figure></p>
-<h4 id="要点3-gif图片的处理"><a href="#要点3-gif图片的处理" class="headerlink" title="要点3:gif图片的处理"></a>要点3:gif图片的处理</h4><p>编码和显示方法与其他几种常用图片不一样.有几个坑,具体请参考先前的一篇博客:安卓里的gif图片解决方案:<a href="http://blog.csdn.net/hss01248/article/details/52163969" target="_blank" rel="external">Fresco+gif</a></p>
+<h5 id="要点2-bitmap解码设置成RGB565-以减小内存占用"><a href="#要点2-bitmap解码设置成RGB565-以减小内存占用" class="headerlink" title="要点2 : bitmap解码设置成RGB565,以减小内存占用"></a>要点2 : bitmap解码设置成RGB565,以减小内存占用</h5><p>也是初始化时设置：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">ImagePipelineConfig.newBuilder(context)</div><div class="line">.setBitmapsConfig(Bitmap.Config.RGB_565)</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<h5 id="要点3-gif图片的处理"><a href="#要点3-gif图片的处理" class="headerlink" title="要点3:gif图片的处理"></a>要点3:gif图片的处理</h5><p>编码和显示方法与其他几种常用图片不一样.有几个坑,具体请参考先前的一篇博客:安卓里的gif图片解决方案:<a href="http://blog.csdn.net/hss01248/article/details/52163969" target="_blank" rel="external">Fresco+gif</a></p>
 <p>容器view滑动中和停止后请求的暂停和恢复</p>
 <p>fresco有相关api支持:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Fresco.getImagePipeline().pause();</div><div class="line">Fresco.getImagePipeline().resume();</div></pre></td></tr></table></figure></p>
-<h3 id="图片常见效果"><a href="#图片常见效果" class="headerlink" title="图片常见效果"></a>图片常见效果</h3><h4 id="圆角和圆形"><a href="#圆角和圆形" class="headerlink" title="圆角和圆形"></a>圆角和圆形</h4><ul>
+<h3 id="3-图片常见效果"><a href="#3-图片常见效果" class="headerlink" title="3. 图片常见效果"></a>3. 图片常见效果</h3><h4 id="1-圆角和圆形"><a href="#1-圆角和圆形" class="headerlink" title="1. 圆角和圆形"></a>1. 圆角和圆形</h4><ul>
 <li>fresco本身就支持,xml或代码里设置即可.注意gif图片的特殊性,需要特殊处理.</li>
 </ul>
-<h4 id="高斯模糊"><a href="#高斯模糊" class="headerlink" title="高斯模糊"></a>高斯模糊</h4><ul>
+<h4 id="2-高斯模糊"><a href="#2-高斯模糊" class="headerlink" title="2. 高斯模糊"></a>2. 高斯模糊</h4><ul>
 <li>使用开源框架<a href="https://github.com/Commit451/NativeStackBlur" target="_blank" rel="external">NativeStackBlur</a>,能够将一个bitmap高斯模糊后返回</li>
 </ul>
 <p>或者采用为fresco封装好的高斯模糊处理器:<a href="https://github.com/wasabeef/fresco-processors/blob/master/processors/src/main/java/jp/wasabeef/fresco/processors/BlurPostprocessor.java" target="_blank" rel="external">BlurPostprocessor</a></p>
@@ -483,6 +483,10 @@ UI给的png图应当再通过tinypng或者“智图”将图">
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/27/jenkins-Robotium-Uiautomator-spoon持续集成自动化测试平台/" rel="prev" title="jenkins+Robotium+Uiautomator+spoon持续集成自动化测试平台">
+                jenkins+Robotium+Uiautomator+spoon持续集成自动化测试平台 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -554,7 +558,7 @@ UI给的png图应当再通过tinypng或者“智图”将图">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -562,7 +566,7 @@ UI给的png图应当再通过tinypng或者“智图”将图">
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -571,7 +575,7 @@ UI给的png图应当再通过tinypng或者“智图”将图">
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -600,7 +604,7 @@ UI给的png图应当再通过tinypng或者“智图”将图">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-apk内部图片优化：控制apk大小"><span class="nav-number">1.</span> <span class="nav-text">1. apk内部图片优化：控制apk大小</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#几种图片的主要特点"><span class="nav-number">1.1.</span> <span class="nav-text">几种图片的主要特点:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对于小图标"><span class="nav-number">1.2.</span> <span class="nav-text">对于小图标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大图，背景图，默认图"><span class="nav-number">1.3.</span> <span class="nav-text">大图，背景图，默认图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ui设计图尺寸和切图：如何只切一套图就够用？"><span class="nav-number">1.4.</span> <span class="nav-text">ui设计图尺寸和切图：如何只切一套图就够用？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-图片选择和裁剪"><span class="nav-number">2.</span> <span class="nav-text">2.图片选择和裁剪</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#裁剪"><span class="nav-number">2.1.</span> <span class="nav-text">裁剪</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多图选择"><span class="nav-number">2.2.</span> <span class="nav-text">多图选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片上传"><span class="nav-number">2.3.</span> <span class="nav-text">图片上传</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器端的图片处理api-七牛"><span class="nav-number">2.4.</span> <span class="nav-text">服务器端的图片处理api-七牛</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#缩小和裁剪"><span class="nav-number">2.4.1.</span> <span class="nav-text">缩小和裁剪</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#格式转换"><span class="nav-number">2.4.2.</span> <span class="nav-text">格式转换:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gif图片"><span class="nav-number">2.4.3.</span> <span class="nav-text">gif图片:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端-fresco"><span class="nav-number">2.5.</span> <span class="nav-text">客户端:fresco</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#要点1-通过downsampling-resizing-来最大化减少bitmap占用的内存"><span class="nav-number">2.5.1.</span> <span class="nav-text">要点1:通过downsampling + resizing 来最大化减少bitmap占用的内存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#要点2-bitmap解码设置成RGB565-以减小内存占用"><span class="nav-number">2.5.2.</span> <span class="nav-text">要点2 : bitmap解码设置成RGB565,以减小内存占用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#要点3-gif图片的处理"><span class="nav-number">2.5.3.</span> <span class="nav-text">要点3:gif图片的处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片常见效果"><span class="nav-number">2.6.</span> <span class="nav-text">图片常见效果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#圆角和圆形"><span class="nav-number">2.6.1.</span> <span class="nav-text">圆角和圆形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高斯模糊"><span class="nav-number">2.6.2.</span> <span class="nav-text">高斯模糊</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关博客-文档"><span class="nav-number">2.7.</span> <span class="nav-text">相关博客/文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关工具-网站和github源码"><span class="nav-number">2.8.</span> <span class="nav-text">相关工具( 网站和github源码)</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-apk内部图片优化：控制apk大小"><span class="nav-number">1.</span> <span class="nav-text">1. apk内部图片优化：控制apk大小</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#几种图片的主要特点"><span class="nav-number">1.1.</span> <span class="nav-text">几种图片的主要特点:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对于小图标"><span class="nav-number">1.2.</span> <span class="nav-text">对于小图标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大图，背景图，默认图"><span class="nav-number">1.3.</span> <span class="nav-text">大图，背景图，默认图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ui设计图尺寸和切图：如何只切一套图就够用？"><span class="nav-number">1.4.</span> <span class="nav-text">ui设计图尺寸和切图：如何只切一套图就够用？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-图片选择和裁剪"><span class="nav-number">2.</span> <span class="nav-text">2.图片选择和裁剪</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#裁剪"><span class="nav-number">2.1.</span> <span class="nav-text">裁剪</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多图选择"><span class="nav-number">2.2.</span> <span class="nav-text">多图选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片上传"><span class="nav-number">2.3.</span> <span class="nav-text">图片上传</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器端的图片处理api-七牛"><span class="nav-number">2.4.</span> <span class="nav-text">服务器端的图片处理api-七牛</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#缩小和裁剪"><span class="nav-number">2.4.1.</span> <span class="nav-text">缩小和裁剪</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#格式转换"><span class="nav-number">2.4.2.</span> <span class="nav-text">格式转换:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gif图片"><span class="nav-number">2.4.3.</span> <span class="nav-text">gif图片:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#客户端-fresco"><span class="nav-number">2.4.4.</span> <span class="nav-text">客户端:fresco</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#要点1-通过downsampling-resizing-来最大化减少bitmap占用的内存"><span class="nav-number">2.4.4.1.</span> <span class="nav-text">要点1:通过downsampling + resizing 来最大化减少bitmap占用的内存</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#要点2-bitmap解码设置成RGB565-以减小内存占用"><span class="nav-number">2.4.4.2.</span> <span class="nav-text">要点2 : bitmap解码设置成RGB565,以减小内存占用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#要点3-gif图片的处理"><span class="nav-number">2.4.4.3.</span> <span class="nav-text">要点3:gif图片的处理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-图片常见效果"><span class="nav-number">2.5.</span> <span class="nav-text">3. 图片常见效果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-圆角和圆形"><span class="nav-number">2.5.1.</span> <span class="nav-text">1. 圆角和圆形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-高斯模糊"><span class="nav-number">2.5.2.</span> <span class="nav-text">2. 高斯模糊</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关博客-文档"><span class="nav-number">2.6.</span> <span class="nav-text">相关博客/文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关工具-网站和github源码"><span class="nav-number">2.7.</span> <span class="nav-text">相关工具( 网站和github源码)</span></a></li></ol></li></ol></div>
             
           </div>
         </section>

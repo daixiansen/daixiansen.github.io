@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="android,orm," />
 
 
 
@@ -84,15 +84,43 @@
 
 
 
-<meta name="description" content="Everything is going on,but don&apos;t give up trying.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="戴先森的私人领域">
-<meta property="og:url" content="http://yoursite.com/categories/设计模式/index.html">
+<meta name="description" content="GreenDao 使用教程
+GreenDao orm数据库框架
+
+
+
+优势
+
+
+1:性能最大化  2:内存开销最小  3:API 简单好用  4:对Android 高度优化  5:2.2版本以上还支持加密数据库  6:支持protobuf协议存储(protobuf 比json更快,google的优秀产品,因此greendao能很好地与retrofit 2.0结合protobuf网络请求并缓存)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库框架GreenDao的使用">
+<meta property="og:url" content="http://yoursite.com/2016/09/27/数据库框架GreenDao的使用/index.html">
 <meta property="og:site_name" content="戴先森的私人领域">
-<meta property="og:description" content="Everything is going on,but don&apos;t give up trying.">
+<meta property="og:description" content="GreenDao 使用教程
+GreenDao orm数据库框架
+
+
+
+优势
+
+
+1:性能最大化  2:内存开销最小  3:API 简单好用  4:对Android 高度优化  5:2.2版本以上还支持加密数据库  6:支持protobuf协议存储(protobuf 比json更快,google的优秀产品,因此greendao能很好地与retrofit 2.0结合protobuf网络请求并缓存)">
+<meta property="og:image" content="http://img.blog.csdn.net/20160507155348257?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.blog.csdn.net/20160507160318660?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:updated_time" content="2016-09-27T13:19:50.459Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="戴先森的私人领域">
-<meta name="twitter:description" content="Everything is going on,but don&apos;t give up trying.">
+<meta name="twitter:title" content="数据库框架GreenDao的使用">
+<meta name="twitter:description" content="GreenDao 使用教程
+GreenDao orm数据库框架
+
+
+
+优势
+
+
+1:性能最大化  2:内存开销最小  3:API 简单好用  4:对Android 高度优化  5:2.2版本以上还支持加密数据库  6:支持protobuf协议存储(protobuf 比json更快,google的优秀产品,因此greendao能很好地与retrofit 2.0结合protobuf网络请求并缓存)">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20160507155348257?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
 
 
 
@@ -113,9 +141,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/设计模式/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/09/27/数据库框架GreenDao的使用/"/>
 
-  <title> 分类: 设计模式 | 戴先森的私人领域 </title>
+  <title> 数据库框架GreenDao的使用 | 戴先森的私人领域 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -136,7 +164,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -244,75 +272,167 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        设计模式
-        <small>分类</small>
-      </h2>
-    </div>
-
+  <div id="posts" class="posts-expand">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/09/04/观察者模式/" itemprop="url">
-              
-                <span itemprop="name">观察者模式</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-09-04T22:41:11+08:00"
-              content="2016-09-04" >
-          09-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/09/01/设计模式之模板方法模式/" itemprop="url">
-              
-                <span itemprop="name">设计模式之模板方法模式</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-09-01T17:24:03+08:00"
-              content="2016-09-01" >
-          09-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-  </section>
 
   
+  
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                数据库框架GreenDao的使用
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-27T20:59:16+08:00" content="2016-09-27">
+              2016-09-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/27/数据库框架GreenDao的使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/27/数据库框架GreenDao的使用/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="GreenDao-使用教程"><a href="#GreenDao-使用教程" class="headerlink" title="GreenDao 使用教程"></a>GreenDao 使用教程</h3><ul>
+<li>GreenDao orm数据库框架</li>
+</ul>
+<p><img src="http://img.blog.csdn.net/20160507155348257?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
+<ul>
+<li>优势</li>
+</ul>
+<blockquote>
+<p>1:性能最大化<br>  2:内存开销最小<br>  3:API 简单好用<br>  4:对Android 高度优化<br>  5:2.2版本以上还支持加密数据库<br>  6:支持protobuf协议存储(protobuf 比json更快,google的优秀产品,因此greendao能很好地与retrofit 2.0结合protobuf网络请求并缓存)</p>
+</blockquote>
+<ul>
+<li>greendao的性能远胜于ORMLite ActiveAndroid Xutils等(我亲自测试了的)</li>
+</ul>
+<ul>
+<li>greendao是两级数据库,分为持久的内存sqlite数据库与内存数据库,如果频繁操作数据库的话,建议是用内存数据库,然后持久到sqlite中,这样的性能远胜于原生的sqlite,即使不使用内存数据库,也几乎与原生sqlite的效率几乎接近。</li>
+</ul>
+<h4 id="第一步-添加依赖并创建独立session空间"><a href="#第一步-添加依赖并创建独立session空间" class="headerlink" title="第一步:添加依赖并创建独立session空间"></a>第一步:添加依赖并创建独立session空间</h4><blockquote>
+<p>compile ‘org.greenrobot:greendao-encryption:2.2.0’<br>  compile ‘net.zetetic:android-database-sqlcipher:3.4.0’</p>
+</blockquote>
+<p><img src="http://img.blog.csdn.net/20160507160318660?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/android-orm/" rel="tag">#android,orm</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/27/jenkins-Robotium-Uiautomator-spoon持续集成自动化测试平台/" rel="next" title="jenkins+Robotium+Uiautomator+spoon持续集成自动化测试平台">
+                <i class="fa fa-chevron-left"></i> jenkins+Robotium+Uiautomator+spoon持续集成自动化测试平台
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -320,6 +440,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/27/数据库框架GreenDao的使用/"
+           data-title="数据库框架GreenDao的使用" data-url="http://yoursite.com/2016/09/27/数据库框架GreenDao的使用/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -339,8 +467,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://occcfufho.bkt.clouddn.com/16-8-23/26110035.jpg"
@@ -390,6 +527,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#GreenDao-使用教程"><span class="nav-number">1.</span> <span class="nav-text">GreenDao 使用教程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一步-添加依赖并创建独立session空间"><span class="nav-number">1.1.</span> <span class="nav-text">第一步:添加依赖并创建独立session空间</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -493,6 +641,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
